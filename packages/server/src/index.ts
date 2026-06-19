@@ -29,11 +29,6 @@ app.get("/api/signals", async (_req, reply) => {
 
 try {
   await app.listen({ port: config.port, host: "0.0.0.0" });
-  if (!stocksEnabled()) {
-    app.log.warn(
-      "FINNHUB_API_KEY absente → actions désactivées (crypto uniquement).",
-    );
-  }
 } catch (err) {
   app.log.error(err);
   process.exit(1);

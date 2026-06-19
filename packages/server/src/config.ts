@@ -1,9 +1,18 @@
+import { fileURLToPath } from "node:url";
+import { dirname, resolve } from "node:path";
 import type { Asset } from "@watchtower/shared";
+
+// Charge le .env à la racine du monorepo (src → server → packages → racine).
+const rootEnv = resolve(dirname(fileURLToPath(import.meta.url)), "../../../.env");
+try {
+  process.loadEnvFile(rootEnv);
+} catch {
+  // Pas de .env : on se rabat sur les variables d'environnement existantes.
+}
 
 export const config = {
   port: Number(process.env.PORT ?? 3001),
   webOrigin: process.env.WEB_ORIGIN ?? "http://localhost:5173",
-  finnhubApiKey: process.env.FINNHUB_API_KEY ?? "",
 };
 
 /** Liste des actifs suivis par défaut. À terme : configurable / persisté. */

@@ -1,65 +1,76 @@
 import type { Candle } from "@watchtower/shared";
-import { config } from "../config.js";
 
-const FINNHUB_BASE = "https://finnhub.io/api/v1";
+// Yahoo Finance : API publique (sans clé), fournit de vraies bougies OHLC.
+const YAHOO_BASE = "https://query1.finance.yahoo.com/v8/finance/chart";
 
-/** Indique si le provider actions est utilisable (clé présente). */
+/** Le provider actions (Yahoo) ne nécessite pas de clé : toujours disponible. */
 export function stocksEnabled(): boolean {
-  return config.finnhubApiKey.length > 0;
+  return true;
 }
 
-interface FinnhubCandleResponse {
-  s: string; // "ok" | "no_data"
-  t?: number[]; // timestamps (s)
-  o?: number[];
-  h?: number[];
-  l?: number[];
-  c?: number[];
-  v?: number[];
+interface YahooChartResponse {
+  chart: {
+    result?: Array<{
+      timestamp?: number[];
+      indicators: {
+        quote?: Array<{
+          open?: (number | null)[];
+          high?: (number | null)[];
+          low?: (number | null)[];
+          close?: (number | null)[];
+          volume?: (number | null)[];
+        }>;
+      };
+    }>;
+    error?: { code: string; description: string } | null;
+  };
 }
 
 /**
- * Récupère les bougies récentes depuis Finnhub (clé requise).
+ * Récupère les bougies récentes depuis Yahoo Finance (aucune clé requise).
  * @param symbol ex: "AAPL"
- * @param resolution ex: "60" (minutes), "D" (jour)
- * @param count nombre de bougies
+ * @param interval ex: "1d", "1h"
+ * @param range ex: "3mo", "1mo"
  */
 export async function fetchStockCandles(
   symbol: string,
-  resolution = "60",
-  count = 100,
+  interval = "1d",
+  range = "3mo",
 ): Promise<Candle[]> {
-  if (!stocksEnabled()) {
-    throw new Error("FINNHUB_API_KEY manquante : provider actions désactivé");
-  }
+  const url = `${YAHOO_BASE}/${encodeURIComponent(symbol)}?interval=${interval}&range=${range}`;
 
-  const now = Math.floor(Date.now() / 1000);
-  // Fenêtre large pour garantir assez de bougies (les marchés ferment).
-  const from = now - count * 3600 * 6;
-
-  const url =
-    `${FINNHUB_BASE}/stock/candle?symbol=${encodeURIComponent(symbol)}` +
-    `&resolution=${resolution}&from=${from}&to=${now}&token=${config.finnhubApiKey}`;
-
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    // Yahoo refuse les requêtes sans User-Agent (429/403).
+    headers: { "User-Agent": "Mozilla/5.0 (Watchtower)" },
+  });
   if (!res.ok) {
-    throw new Error(`Finnhub ${symbol}: HTTP ${res.status}`);
+    throw new Error(`Yahoo ${symbol}: HTTP ${res.status}`);
   }
 
-  const data = (await res.json()) as FinnhubCandleResponse;
-  if (data.s !== "ok" || !data.t || !data.c) {
-    throw new Error(`Finnhub ${symbol}: pas de données (${data.s})`);
+  const data = (await res.json()) as YahooChartResponse;
+  if (data.chart.error) {
+    throw new Error(`Yahoo ${symbol}: ${data.chart.error.description}`);
+  }
+
+  const result = data.chart.result?.[0];
+  const quote = result?.indicators.quote?.[0];
+  const times = result?.timestamp;
+  if (!result || !quote || !times || !quote.close) {
+    throw new Error(`Yahoo ${symbol}: pas de données`);
   }
 
   const candles: Candle[] = [];
-  for (let i = 0; i < data.t.length; i++) {
+  for (let i = 0; i < times.length; i++) {
+    const close = quote.close[i];
+    // Yahoo insère parfois des trous (null) ; on les ignore.
+    if (close == null) continue;
     candles.push({
-      time: data.t[i]! * 1000,
-      open: data.o?.[i] ?? 0,
-      high: data.h?.[i] ?? 0,
-      low: data.l?.[i] ?? 0,
-      close: data.c[i]!,
-      volume: data.v?.[i] ?? 0,
+      time: times[i]! * 1000,
+      open: quote.open?.[i] ?? close,
+      high: quote.high?.[i] ?? close,
+      low: quote.low?.[i] ?? close,
+      close,
+      volume: quote.volume?.[i] ?? 0,
     });
   }
   return candles;

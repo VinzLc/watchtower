@@ -13,25 +13,29 @@ Monorepo pnpm avec 3 packages :
 | Package | Rôle |
 |---|---|
 | [`packages/shared`](packages/shared) | Types communs, calculs d'indicateurs (SMA/EMA/RSI), logique de signal |
-| [`packages/server`](packages/server) | Backend Fastify : providers crypto (Binance) + actions (Finnhub), API REST |
+| [`packages/server`](packages/server) | Backend Fastify : providers crypto (Binance) + actions (Yahoo Finance), API REST |
 | [`packages/web`](packages/web) | Dashboard Vite + React, auto-refresh |
 
 ## Démarrage
 
 ```bash
 pnpm install
-cp .env.example .env   # optionnel : ajouter FINNHUB_API_KEY pour les actions
-pnpm dev               # lance server (:3001) + web (:5173) en parallèle
+cp .env.example .env   # choisis un PORT libre (défaut 4010)
+pnpm dev               # lance server + web (:5173) en parallèle
 ```
 
 - Dashboard : http://localhost:5173
-- API : http://localhost:3001/api/signals
+- API : http://localhost:4010/api/signals (selon PORT)
+
+Le dashboard proxifie `/api/*` vers le backend en lisant le `PORT` du `.env`,
+donc les deux restent synchronisés automatiquement.
 
 ## Sources de données
 
-- **Crypto** — API publique Binance, aucune clé requise (BTC, ETH, ...).
-- **Actions** — Finnhub, nécessite une clé gratuite (`FINNHUB_API_KEY`). Sans clé,
-  seules les cryptos sont affichées.
+Aucune clé API requise :
+
+- **Crypto** — API publique Binance (BTC, ETH, SOL, ...).
+- **Actions** — API publique Yahoo Finance (AAPL, MSFT, NVDA, ...).
 
 ## Signaux
 
