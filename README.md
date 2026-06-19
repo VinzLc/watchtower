@@ -47,6 +47,32 @@ Et en déduit une recommandation : `BUY` / `SELL` / `HOLD` avec un score de conf
 et les raisons. Les seuils sont configurables dans
 [`packages/shared/src/signals.ts`](packages/shared/src/signals.ts).
 
+## Briefings de James
+
+James envoie ses analyses sous forme de texte. Watchtower les stocke en données
+structurées dans
+[`packages/server/src/data/briefings.json`](packages/server/src/data/briefings.json) :
+thèse (tldr), positionnement, macro, **prix d'achat cibles**, actifs surveillés.
+Le briefing le plus récent pilote les cibles affichées sur le dashboard.
+
+### Ingestion automatique (texte → JSON)
+
+Au lieu d'éditer le JSON à la main, colle le texte de James et laisse Claude le
+structurer (nécessite `ANTHROPIC_API_KEY` dans le `.env`) :
+
+```bash
+# depuis un fichier
+pnpm --filter @watchtower/server run ingest chemin/vers/briefing.txt
+
+# ou via le presse-papier (macOS)
+pbpaste | pnpm --filter @watchtower/server run ingest
+```
+
+Le script ([`ingest.ts`](packages/server/src/ingest.ts)) appelle `claude-opus-4-8`
+en sortie structurée (Zod), valide le résultat et l'ajoute en tête de
+`briefings.json`. Ensuite : `pnpm --filter @watchtower/server run snapshot` puis
+commit/push pour publier. La clé Anthropic n'est utilisée qu'en local — jamais en CI.
+
 ## Déploiement (GitHub Pages)
 
 Le dashboard est publié sur GitHub Pages : **https://vinzlc.github.io/watchtower/**

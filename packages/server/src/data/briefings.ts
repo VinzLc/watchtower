@@ -1,86 +1,24 @@
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, resolve } from "node:path";
 import type { Briefing } from "@watchtower/shared";
 
 /**
- * Briefings de James, du plus récent au plus ancien.
- * Quand James envoie un nouveau texte, l'ajouter ici (structuré).
+ * Les briefings de James sont stockés dans briefings.json (modifiable par le
+ * script d'ingestion `pnpm --filter @watchtower/server run ingest`).
  */
-export const BRIEFINGS: Briefing[] = [
-  {
-    id: "2026-06-19-summer-game-plan",
-    title: "My Summer Game Plan",
-    date: "2026-06-19",
-    tldr: "Patient, sélectif, prêt à acheter seulement sur grosses décotes. Le cash reste sur la touche jusqu'à une opportunité excellente. Pas de chasse à l'IA, pas de crypto sauf dip majeur — attendu sur les 3-4 prochains mois.",
-    stance: [
-      "Grosse réserve de cash après une vente immobilière (rotation vers SpaceX seulement partiellement remplie).",
-      "Ne déploie le cash que sur de vraies bonnes affaires, sur des titres déjà appréciés et tenus à long terme.",
-      "Déjà satisfait de sa position Tesla : attend la baisse pour mieux entrer.",
-      "Crypto : achat seulement sur un dip monstre (probable d'ici 3-4 mois).",
-    ],
-    macro: [
-      "La Fed laisse les taux inchangés mais ton plus prudent (hausse possible plus tard) → incertitude, pèse sur les actions.",
-      "Marché attendu calme et range-bound cet été, sauf événement majeur.",
-      "Saisonnalité : les mois d'été — surtout septembre — tendent à être faibles.",
-    ],
-    targets: [
-      {
-        symbol: "TSLA",
-        kind: "stock",
-        label: "Tesla",
-        target: 380,
-        notedPrice: 400,
-        note: "Acheter autour de $380 (cotait ~$400). Déjà bien servi, attend le repli.",
-      },
-      {
-        symbol: "MU",
-        kind: "stock",
-        label: "Micron",
-        target: 700,
-        notedPrice: 1100,
-        note: "Acheter autour de $700 (cotait >$1100 selon James).",
-      },
-      {
-        symbol: "PLTR",
-        kind: "stock",
-        label: "Palantir",
-        target: 100,
-        notedPrice: 128,
-        note: "Acheter autour de $100 (cotait ~$128).",
-      },
-    ],
-    watching: [
-      {
-        symbol: "STRC",
-        kind: "stock",
-        label: "STRC",
-        note: "-5% sur STRC mais +4% net du rendement. Veut revenir à 50/50, surveille de près. Les investisseurs ont afflué à $83. Ne déploie pas le cash immo dedans.",
-      },
-    ],
-    body: `My Summer Game Plan
+export const BRIEFINGS_PATH = resolve(
+  dirname(fileURLToPath(import.meta.url)),
+  "briefings.json",
+);
 
-TLDR
-Summer game plan... is to be patient, selective, and ready to buy only on big discounts. Cash is staying on the sidelines until the opportunity looks excellent. I am not chasing AI and not buying Crypto unless we get a monster dip. I expect one over the next 3 to 4 mths.
+/** Charge les briefings, triés du plus récent au plus ancien. */
+export function loadBriefings(): Briefing[] {
+  const raw = JSON.parse(readFileSync(BRIEFINGS_PATH, "utf8")) as Briefing[];
+  return [...raw].sort((a, b) => b.date.localeCompare(a.date));
+}
 
-Details
-As you all know, I sold some real estate recently and had planned to rotate that money into SpaceX, but it didn't fully work out as I only got a fraction filled. So I'm sitting on a solid pile of cash right now.
-
-Re STRC - I am down 5% on my STRC - but when you net out the yield I am up 4%.... but I am not deploying my real estate cash into STRC.... I want to get back to half half. I will watch STRC carefully. The investors flooded in yesterday when it hit $83 - check my Vid from yesterday.
-
-So again, I'm not rushing to invest the cash. I'll only put the money to work if I see really good deals on stocks I already like and believe in long-term. My target "buy" prices are:
-
-Tesla around $380 (it's trading near $400 right now)
-Micron around $700 (it's over $1,100 currently)
-Palantir around $100 (it's about $128 now)
-etc etc
-
-I expect the stock market to stay pretty quiet and range-bound this summer unless something major happens. Two reasons:
-
-The Federal Reserve just kept interest rates steady but sounded more cautious (they may even raise rates later). This usually creates uncertainty and can weigh on stock prices.
-
-Historically, summer months — especially September — tend to suck
-
-I'm already happy with the amount of Tesla I have... when it pops I will be sitting pretty. I'll simply wait for the market to dip and offer those better entry points before deploying the cash.`,
-  },
-];
+export const BRIEFINGS: Briefing[] = loadBriefings();
 
 /** Le briefing actif (le plus récent). */
 export const CURRENT_BRIEFING = BRIEFINGS[0]!;

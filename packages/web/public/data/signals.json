@@ -20,7 +20,7 @@
         "SMA10 (399.65) sous SMA30 (417.82) → tendance baissière",
         "RSI 47.0 → neutre"
       ],
-      "computedAt": 1781893900617
+      "computedAt": 1781910887144
     },
     {
       "asset": {
@@ -42,7 +42,7 @@
         "SMA10 (990.45) au-dessus de SMA30 (889.45) → tendance haussière",
         "RSI 66.3 → neutre"
       ],
-      "computedAt": 1781893900640
+      "computedAt": 1781910887159
     },
     {
       "asset": {
@@ -64,7 +64,7 @@
         "SMA10 (132.04) sous SMA30 (137.12) → tendance baissière",
         "RSI 41.1 → neutre"
       ],
-      "computedAt": 1781893900619
+      "computedAt": 1781910887131
     },
     {
       "asset": {
@@ -86,7 +86,7 @@
         "SMA10 (93.81) sous SMA30 (97.12) → tendance baissière",
         "RSI 23.7 < 30 → survente"
       ],
-      "computedAt": 1781893900612
+      "computedAt": 1781910887144
     },
     {
       "asset": {
@@ -95,20 +95,20 @@
         "symbol": "BTCUSDT",
         "label": "Bitcoin"
       },
-      "price": 63084.61,
-      "changePct": -6.252632179627515,
+      "price": 63280,
+      "changePct": -4.870686972545687,
       "action": "BUY",
       "confidence": 0.5,
       "indicators": {
-        "smaShort": 62926.141,
-        "smaLong": 62914.23300000001,
-        "rsi": 49.54794776498976
+        "smaShort": 63164.041999999994,
+        "smaLong": 62931.04033333333,
+        "rsi": 53.3042527206524
       },
       "reasons": [
-        "SMA10 (62926.14) au-dessus de SMA30 (62914.23) → tendance haussière",
-        "RSI 49.5 → neutre"
+        "SMA10 (63164.04) au-dessus de SMA30 (62931.04) → tendance haussière",
+        "RSI 53.3 → neutre"
       ],
-      "computedAt": 1781893900757
+      "computedAt": 1781910887245
     },
     {
       "asset": {
@@ -117,21 +117,21 @@
         "symbol": "ETHUSDT",
         "label": "Ethereum"
       },
-      "price": 1701.08,
-      "changePct": -7.827019880467945,
-      "action": "SELL",
+      "price": 1705.68,
+      "changePct": -6.123999009328819,
+      "action": "BUY",
       "confidence": 0.5,
       "indicators": {
-        "smaShort": 1698.994,
-        "smaLong": 1701.869,
-        "rsi": 46.468035258926896
+        "smaShort": 1704.466,
+        "smaLong": 1701.934,
+        "rsi": 49.62378499397608
       },
       "reasons": [
-        "SMA10 (1698.99) sous SMA30 (1701.87) → tendance baissière",
-        "RSI 46.5 → neutre"
+        "SMA10 (1704.47) au-dessus de SMA30 (1701.93) → tendance haussière",
+        "RSI 49.6 → neutre"
       ],
-      "computedAt": 1781893900759
+      "computedAt": 1781910887248
     }
   ],
-  "generatedAt": 1781893900422
+  "generatedAt": 1781910886928
 }
