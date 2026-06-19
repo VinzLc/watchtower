@@ -15,12 +15,15 @@ export const config = {
   webOrigin: process.env.WEB_ORIGIN ?? "http://localhost:5173",
 };
 
-/** Liste des actifs suivis par défaut. À terme : configurable / persisté. */
+/**
+ * Liste des actifs suivis pour les signaux techniques (univers de James).
+ * À terme : dérivée automatiquement des briefings.
+ */
 export const WATCHLIST: Asset[] = [
+  { id: "stock:TSLA", kind: "stock", symbol: "TSLA", label: "Tesla" },
+  { id: "stock:MU", kind: "stock", symbol: "MU", label: "Micron" },
+  { id: "stock:PLTR", kind: "stock", symbol: "PLTR", label: "Palantir" },
+  { id: "stock:STRC", kind: "stock", symbol: "STRC", label: "STRC" },
   { id: "crypto:BTCUSDT", kind: "crypto", symbol: "BTCUSDT", label: "Bitcoin" },
   { id: "crypto:ETHUSDT", kind: "crypto", symbol: "ETHUSDT", label: "Ethereum" },
-  { id: "crypto:SOLUSDT", kind: "crypto", symbol: "SOLUSDT", label: "Solana" },
-  { id: "stock:AAPL", kind: "stock", symbol: "AAPL", label: "Apple" },
-  { id: "stock:MSFT", kind: "stock", symbol: "MSFT", label: "Microsoft" },
-  { id: "stock:NVDA", kind: "stock", symbol: "NVDA", label: "NVIDIA" },
 ];

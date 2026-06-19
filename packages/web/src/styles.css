@@ -205,3 +205,202 @@ body {
   color: var(--muted);
   font-size: 0.8rem;
 }
+
+/* ---- Section titles ---- */
+.section-title {
+  margin: 2.5rem 0 0.25rem;
+  font-size: 1.2rem;
+}
+
+/* ---- Plan de James ---- */
+.plan {
+  margin-top: 1.5rem;
+  background: linear-gradient(160deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.4rem 1.5rem;
+}
+
+.plan__from {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--hold);
+}
+
+.plan__title {
+  margin: 0.2rem 0 0;
+  font-size: 1.5rem;
+}
+
+.plan__date {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.plan__tldr {
+  margin: 1rem 0 1.25rem;
+  font-size: 1.02rem;
+  line-height: 1.5;
+  border-left: 3px solid var(--hold);
+  padding-left: 0.9rem;
+}
+
+.plan__cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.plan__col h3,
+.plan__watching h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.plan__col ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.plan__col li {
+  margin-bottom: 0.4rem;
+}
+
+.plan__watching {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.plan__watching p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.plan__watching strong {
+  color: var(--text);
+}
+
+/* ---- Cartes cibles ---- */
+.grid--targets {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.target {
+  --accent: var(--hold);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 12px;
+  padding: 1.1rem;
+}
+
+.target--buy {
+  --accent: var(--buy);
+}
+.target--approach {
+  --accent: var(--hold);
+}
+.target--wait {
+  --accent: var(--muted);
+}
+
+.target__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.target__label {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.target__symbol {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.badge--buy {
+  background: rgba(46, 204, 113, 0.15);
+  color: var(--buy);
+}
+.badge--approach {
+  background: rgba(245, 185, 66, 0.15);
+  color: var(--hold);
+}
+.badge--wait {
+  background: rgba(138, 150, 176, 0.15);
+  color: var(--muted);
+}
+
+.target__prices {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.target__prices > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.target__prices strong {
+  font-size: 1.35rem;
+}
+
+.target__goal {
+  color: var(--accent);
+}
+
+.target__muted {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.target__arrow {
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+.target__dist {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.target__dist--buy {
+  color: var(--buy);
+}
+.target__dist--approach {
+  color: var(--hold);
+}
+.target__dist--wait {
+  color: var(--muted);
+}
+
+.target__chart {
+  margin: 0.4rem 0 0.7rem;
+}
+
+.target__note {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.target__warn {
+  margin: 0.6rem 0 0;
+  font-size: 0.78rem;
+  color: var(--sell);
+  background: rgba(255, 84, 112, 0.1);
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+}

@@ -9,11 +9,13 @@ export default defineConfig(({ mode }) => {
   // Lit le .env racine pour rester synchronisé avec le backend.
   const env = loadEnv(mode, rootDir, "");
   const apiPort = env.PORT ?? "3001";
+  const webPort = Number(env.WEB_PORT ?? "5180");
 
   return {
     plugins: [react()],
     server: {
-      port: 5173,
+      port: webPort,
+      strictPort: true,
       proxy: {
         // Le dashboard appelle /api/* → proxifié vers le backend Fastify.
         "/api": {
