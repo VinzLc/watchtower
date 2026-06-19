@@ -1,0 +1,137 @@
+{
+  "signals": [
+    {
+      "asset": {
+        "id": "stock:TSLA",
+        "kind": "stock",
+        "symbol": "TSLA",
+        "label": "Tesla"
+      },
+      "price": 400.489990234375,
+      "changePct": 5.308967417689604,
+      "action": "SELL",
+      "confidence": 0.5,
+      "indicators": {
+        "smaShort": 399.647998046875,
+        "smaLong": 417.82366638183595,
+        "rsi": 47.02838331496337
+      },
+      "reasons": [
+        "SMA10 (399.65) sous SMA30 (417.82) → tendance baissière",
+        "RSI 47.0 → neutre"
+      ],
+      "computedAt": 1781893900617
+    },
+    {
+      "asset": {
+        "id": "stock:MU",
+        "kind": "stock",
+        "symbol": "MU",
+        "label": "Micron"
+      },
+      "price": 1133.989990234375,
+      "changePct": 155.24793892829837,
+      "action": "BUY",
+      "confidence": 0.5,
+      "indicators": {
+        "smaShort": 990.4469970703125,
+        "smaLong": 889.4489949544271,
+        "rsi": 66.28553565549275
+      },
+      "reasons": [
+        "SMA10 (990.45) au-dessus de SMA30 (889.45) → tendance haussière",
+        "RSI 66.3 → neutre"
+      ],
+      "computedAt": 1781893900640
+    },
+    {
+      "asset": {
+        "id": "stock:PLTR",
+        "kind": "stock",
+        "symbol": "PLTR",
+        "label": "Palantir"
+      },
+      "price": 128.47000122070312,
+      "changePct": -17.478155662394965,
+      "action": "SELL",
+      "confidence": 0.5,
+      "indicators": {
+        "smaShort": 132.0410026550293,
+        "smaLong": 137.1158332824707,
+        "rsi": 41.09914355198118
+      },
+      "reasons": [
+        "SMA10 (132.04) sous SMA30 (137.12) → tendance baissière",
+        "RSI 41.1 → neutre"
+      ],
+      "computedAt": 1781893900619
+    },
+    {
+      "asset": {
+        "id": "stock:STRC",
+        "kind": "stock",
+        "symbol": "STRC",
+        "label": "STRC"
+      },
+      "price": 88.58999633789062,
+      "changePct": -10.946930691155785,
+      "action": "HOLD",
+      "confidence": 0.25,
+      "indicators": {
+        "smaShort": 93.81099929809571,
+        "smaLong": 97.12233301798503,
+        "rsi": 23.72143183821437
+      },
+      "reasons": [
+        "SMA10 (93.81) sous SMA30 (97.12) → tendance baissière",
+        "RSI 23.7 < 30 → survente"
+      ],
+      "computedAt": 1781893900612
+    },
+    {
+      "asset": {
+        "id": "crypto:BTCUSDT",
+        "kind": "crypto",
+        "symbol": "BTCUSDT",
+        "label": "Bitcoin"
+      },
+      "price": 63084.61,
+      "changePct": -6.252632179627515,
+      "action": "BUY",
+      "confidence": 0.5,
+      "indicators": {
+        "smaShort": 62926.141,
+        "smaLong": 62914.23300000001,
+        "rsi": 49.54794776498976
+      },
+      "reasons": [
+        "SMA10 (62926.14) au-dessus de SMA30 (62914.23) → tendance haussière",
+        "RSI 49.5 → neutre"
+      ],
+      "computedAt": 1781893900757
+    },
+    {
+      "asset": {
+        "id": "crypto:ETHUSDT",
+        "kind": "crypto",
+        "symbol": "ETHUSDT",
+        "label": "Ethereum"
+      },
+      "price": 1701.08,
+      "changePct": -7.827019880467945,
+      "action": "SELL",
+      "confidence": 0.5,
+      "indicators": {
+        "smaShort": 1698.994,
+        "smaLong": 1701.869,
+        "rsi": 46.468035258926896
+      },
+      "reasons": [
+        "SMA10 (1698.99) sous SMA30 (1701.87) → tendance baissière",
+        "RSI 46.5 → neutre"
+      ],
+      "computedAt": 1781893900759
+    }
+  ],
+  "generatedAt": 1781893900422
+}

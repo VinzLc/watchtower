@@ -1,0 +1,62 @@
+name: Deploy Watchtower to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Rafraîchit le snapshot de données toutes les 30 minutes.
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un seul déploiement à la fois.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Génère le snapshot de données (best-effort)
+        run: |
+          pnpm --filter @watchtower/server run snapshot \
+            || echo "Snapshot échoué (providers CI ?) — on utilise les données commitées."
+
+      - name: Build du dashboard
+        run: pnpm --filter @watchtower/web run build
+        env:
+          BASE_PATH: /watchtower/
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: packages/web/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -47,6 +47,20 @@ Et en déduit une recommandation : `BUY` / `SELL` / `HOLD` avec un score de conf
 et les raisons. Les seuils sont configurables dans
 [`packages/shared/src/signals.ts`](packages/shared/src/signals.ts).
 
+## Déploiement (GitHub Pages)
+
+Le dashboard est publié sur GitHub Pages : **https://vinzlc.github.io/watchtower/**
+
+Comme Pages est 100 % statique (pas de backend), un snapshot des données est
+généré par [`pnpm --filter @watchtower/server snapshot`](packages/server/src/snapshot.ts)
+(écrit dans `packages/web/public/data/`), puis le dashboard lit ce JSON en prod.
+Le workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
+régénère le snapshot et redéploie **toutes les 30 min** (et à chaque push).
+
+> En local (`pnpm dev`), le dashboard appelle le backend en direct (temps réel).
+> En prod, il lit le dernier snapshot. Pour du vrai temps réel en ligne, héberger
+> le backend (Render / Fly / Railway) et pointer le front dessus.
+
 ## Roadmap
 
 - [ ] Alertes (Telegram / Discord / email) sur changement de signal

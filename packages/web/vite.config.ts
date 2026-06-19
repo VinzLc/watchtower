@@ -12,6 +12,8 @@ export default defineConfig(({ mode }) => {
   const webPort = Number(env.WEB_PORT ?? "5180");
 
   return {
+    // Sous-chemin du projet sur GitHub Pages (https://<user>.github.io/watchtower/).
+    base: mode === "production" ? env.BASE_PATH ?? "/watchtower/" : "/",
     plugins: [react()],
     server: {
       port: webPort,

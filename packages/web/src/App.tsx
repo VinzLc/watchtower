@@ -24,7 +24,7 @@ export function App() {
         setPlan(p);
         setSignals(s);
         setError(null);
-        setUpdatedAt(Date.now());
+        setUpdatedAt(p.generatedAt ?? Date.now());
       } catch (err) {
         if (!active) return;
         setError(err instanceof Error ? err.message : String(err));
@@ -50,8 +50,7 @@ export function App() {
         </p>
         {updatedAt && (
           <span className="app__updated">
-            Mis à jour à {new Date(updatedAt).toLocaleTimeString("fr-FR")} ·
-            actualisation auto 30 s
+            Données du {new Date(updatedAt).toLocaleString("fr-FR")}
           </span>
         )}
       </header>
