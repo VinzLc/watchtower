@@ -1,0 +1,207 @@
+:root {
+  --bg: #0b0f1a;
+  --panel: #141b2d;
+  --panel-2: #1b2540;
+  --text: #e6ebf5;
+  --muted: #8a96b0;
+  --buy: #2ecc71;
+  --sell: #ff5470;
+  --hold: #f5b942;
+  --border: #25304d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.app__header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.app__subtitle {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+}
+
+.app__updated {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.app__error {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(255, 84, 112, 0.12);
+  border: 1px solid var(--sell);
+}
+
+.app__loading {
+  color: var(--muted);
+  margin-top: 2rem;
+}
+
+.grid {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem;
+}
+
+.card--buy {
+  border-left-color: var(--buy);
+}
+.card--sell {
+  border-left-color: var(--sell);
+}
+.card--hold {
+  border-left-color: var(--hold);
+}
+
+.card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card__label {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.card__symbol {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.badge {
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+}
+
+.badge--buy {
+  background: rgba(46, 204, 113, 0.15);
+  color: var(--buy);
+}
+.badge--sell {
+  background: rgba(255, 84, 112, 0.15);
+  color: var(--sell);
+}
+.badge--hold {
+  background: rgba(245, 185, 66, 0.15);
+  color: var(--hold);
+}
+
+.card__price {
+  margin: 0.9rem 0 0.6rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.card__price strong {
+  font-size: 1.5rem;
+}
+
+.delta {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.delta--up {
+  color: var(--buy);
+}
+.delta--down {
+  color: var(--sell);
+}
+
+.card__confidence {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+
+.bar {
+  flex: 1;
+  height: 6px;
+  background: var(--panel-2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar__fill {
+  height: 100%;
+}
+.bar__fill--buy {
+  background: var(--buy);
+}
+.bar__fill--sell {
+  background: var(--sell);
+}
+.bar__fill--hold {
+  background: var(--hold);
+}
+
+.card__indicators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.7rem;
+}
+
+.card__indicators li {
+  font-size: 0.72rem;
+  background: var(--panel-2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  color: var(--muted);
+}
+
+.card__reasons {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.card__reasons li {
+  margin-bottom: 0.25rem;
+}
+
+.app__footer {
+  margin-top: 3rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
