@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-import type { Signal } from "@watchtower/shared";
-import { fetchPlan, fetchSignals, type PlanResponse } from "./api.js";
+import { fetchPlan, type PlanResponse } from "./api.js";
 import { PlanHeader } from "./PlanHeader.js";
 import { TargetCard } from "./TargetCard.js";
-import { SignalCard } from "./SignalCard.js";
 
 const REFRESH_MS = 30_000;
 
 export function App() {
   const [plan, setPlan] = useState<PlanResponse | null>(null);
-  const [signals, setSignals] = useState<Signal[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [updatedAt, setUpdatedAt] = useState<number | null>(null);
@@ -19,10 +16,9 @@ export function App() {
 
     async function load() {
       try {
-        const [p, s] = await Promise.all([fetchPlan(), fetchSignals()]);
+        const p = await fetchPlan();
         if (!active) return;
         setPlan(p);
-        setSignals(s);
         setError(null);
         setUpdatedAt(p.generatedAt ?? Date.now());
       } catch (err) {
@@ -75,17 +71,6 @@ export function App() {
           <section className="grid grid--targets">
             {plan.targets.map((ev) => (
               <TargetCard key={ev.target.symbol} ev={ev} />
-            ))}
-          </section>
-        </>
-      )}
-
-      {signals.length > 0 && (
-        <>
-          <h2 className="section-title">📊 Signaux techniques (SMA / RSI)</h2>
-          <section className="grid">
-            {signals.map((s) => (
-              <SignalCard key={s.asset.id} signal={s} />
             ))}
           </section>
         </>
