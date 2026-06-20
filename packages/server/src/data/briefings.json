@@ -22,7 +22,8 @@
         "label": "Tesla",
         "target": 380,
         "notedPrice": 400,
-        "note": "Acheter autour de $380 (cotait ~$400). Déjà bien servi, attend le repli."
+        "note": "Acheter autour de $380 (cotait ~$400). Déjà bien servi, attend le repli.",
+        "vinzTarget": 385
       },
       {
         "symbol": "MU",
@@ -30,7 +31,8 @@
         "label": "Micron",
         "target": 700,
         "notedPrice": 1100,
-        "note": "Acheter autour de $700 (cotait >$1100 selon James)."
+        "note": "Acheter autour de $700 (cotait >$1100 selon James).",
+        "vinzTarget": 800
       },
       {
         "symbol": "PLTR",
@@ -38,7 +40,8 @@
         "label": "Palantir",
         "target": 100,
         "notedPrice": 128,
-        "note": "Acheter autour de $100 (cotait ~$128)."
+        "note": "Acheter autour de $100 (cotait ~$128).",
+        "vinzTarget": 110
       }
     ],
     "watching": [

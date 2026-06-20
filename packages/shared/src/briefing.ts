@@ -11,6 +11,13 @@ export interface PriceTarget {
   notedPrice?: number;
   /** Commentaire de James sur cette cible. */
   note?: string;
+  /**
+   * Notre propre cible d'achat, moins précise que celle de James : on se
+   * laisse une marge (généralement un prix plus haut, donc plus tolérant).
+   */
+  vinzTarget?: number;
+  /** Commentaire sur la cible Vinz. */
+  vinzNote?: string;
 }
 
 /** Un briefing texte de James, structuré. */
@@ -47,6 +54,10 @@ export interface TargetEvaluation {
    * Sert à signaler une incohérence (mauvais ticker, donnée datée...).
    */
   notedDivergencePct?: number;
+  /** Écart en % entre le prix live et notre propre cible, si définie. */
+  vinzDistancePct?: number;
+  /** Statut de notre propre cible, si définie. */
+  vinzStatus?: TargetStatus;
   /** Bougies récentes pour le graphique. */
   candles: Candle[];
 }
@@ -57,19 +68,28 @@ export const APPROACHING_MARGIN_PCT = 5;
 /** Au-delà de cet écart avec le prix noté par James, on lève un avertissement. */
 export const NOTED_DIVERGENCE_WARN_PCT = 25;
 
+/** Calcule l'écart en % et le statut d'un prix live par rapport à une cible. */
+function distanceAndStatus(
+  livePrice: number,
+  goal: number,
+): { distancePct: number; status: TargetStatus } {
+  const distancePct = goal > 0 ? ((livePrice - goal) / goal) * 100 : 0;
+
+  let status: TargetStatus;
+  if (livePrice <= goal) status = "BUY_ZONE";
+  else if (distancePct <= APPROACHING_MARGIN_PCT) status = "APPROACHING";
+  else status = "WAIT";
+
+  return { distancePct, status };
+}
+
 /** Évalue le statut d'une cible par rapport au prix de marché en direct. */
 export function evaluateTarget(
   target: PriceTarget,
   livePrice: number,
   candles: Candle[] = [],
 ): TargetEvaluation {
-  const distancePct =
-    target.target > 0 ? ((livePrice - target.target) / target.target) * 100 : 0;
-
-  let status: TargetStatus;
-  if (livePrice <= target.target) status = "BUY_ZONE";
-  else if (distancePct <= APPROACHING_MARGIN_PCT) status = "APPROACHING";
-  else status = "WAIT";
+  const { distancePct, status } = distanceAndStatus(livePrice, target.target);
 
   let notedDivergencePct: number | undefined;
   if (target.notedPrice && target.notedPrice > 0) {
@@ -77,5 +97,22 @@ export function evaluateTarget(
       ((livePrice - target.notedPrice) / target.notedPrice) * 100;
   }
 
-  return { target, livePrice, distancePct, status, notedDivergencePct, candles };
+  let vinzDistancePct: number | undefined;
+  let vinzStatus: TargetStatus | undefined;
+  if (target.vinzTarget && target.vinzTarget > 0) {
+    const vinz = distanceAndStatus(livePrice, target.vinzTarget);
+    vinzDistancePct = vinz.distancePct;
+    vinzStatus = vinz.status;
+  }
+
+  return {
+    target,
+    livePrice,
+    distancePct,
+    status,
+    notedDivergencePct,
+    vinzDistancePct,
+    vinzStatus,
+    candles,
+  };
 }
