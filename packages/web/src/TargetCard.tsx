@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   Area,
   AreaChart,
@@ -163,7 +164,7 @@ function ChartModal({
     };
   }, [onClose]);
 
-  return (
+  return createPortal(
     <div className="chart-modal" onClick={onClose}>
       <div
         className={`chart-modal__panel target--${cls}`}
@@ -184,7 +185,8 @@ function ChartModal({
           <Chart ev={ev} cls={cls} expanded />
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
