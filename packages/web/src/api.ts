@@ -12,9 +12,13 @@ export interface PlanResponse {
   generatedAt?: number;
 }
 
+// Le snapshot statique est servi avec cache-control: max-age=600 par GitHub
+// Pages : un simple fetch() réutiliserait le cache HTTP du navigateur jusqu'à
+// 10 min, ce qui annule l'intérêt du polling toutes les 30s. On bypass via
+// cache: "no-store" pour que chaque poll aille vérifier la fraîcheur réelle.
 export async function fetchPlan(): Promise<PlanResponse> {
   const url = STATIC ? `${BASE}data/plan.json` : "/api/plan";
-  const res = await fetch(url);
+  const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) {
     throw new Error(`plan: HTTP ${res.status}`);
   }
@@ -23,7 +27,7 @@ export async function fetchPlan(): Promise<PlanResponse> {
 
 export async function fetchSignals(): Promise<Signal[]> {
   const url = STATIC ? `${BASE}data/signals.json` : "/api/signals";
-  const res = await fetch(url);
+  const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) {
     throw new Error(`signals: HTTP ${res.status}`);
   }
