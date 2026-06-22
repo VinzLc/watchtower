@@ -4,6 +4,7 @@ import { dirname, resolve } from "node:path";
 import { BRIEFINGS, CURRENT_BRIEFING } from "./data/briefings.js";
 import { evaluateTargets } from "./plan.js";
 import { computeAllSignals } from "./market.js";
+import { mergeAssetState } from "@watchtower/shared";
 
 /**
  * Génère un snapshot statique des données pour un hébergement sans backend
@@ -16,8 +17,10 @@ const outDir = resolve(
 
 const generatedAt = Date.now();
 
+const { targets: mergedTargets, watching } = mergeAssetState(BRIEFINGS);
+
 const [targets, signals] = await Promise.all([
-  evaluateTargets(CURRENT_BRIEFING.targets),
+  evaluateTargets(mergedTargets),
   computeAllSignals(),
 ]);
 
@@ -25,7 +28,11 @@ await mkdir(outDir, { recursive: true });
 
 await writeFile(
   resolve(outDir, "plan.json"),
-  JSON.stringify({ briefing: CURRENT_BRIEFING, targets, generatedAt }, null, 2),
+  JSON.stringify(
+    { briefing: { ...CURRENT_BRIEFING, watching }, targets, generatedAt },
+    null,
+    2,
+  ),
 );
 
 await writeFile(

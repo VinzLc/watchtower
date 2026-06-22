@@ -5,6 +5,7 @@ import { computeAllSignals } from "./market.js";
 import { stocksEnabled } from "./providers/stocks.js";
 import { BRIEFINGS, CURRENT_BRIEFING } from "./data/briefings.js";
 import { evaluateTargets } from "./plan.js";
+import { mergeAssetState } from "@watchtower/shared";
 
 const app = Fastify({ logger: true });
 
@@ -24,13 +25,15 @@ app.get("/api/briefings", async () =>
 );
 
 /**
- * Plan en cours : le briefing actif de James + ses cibles évaluées en direct
- * (prix live, écart à la cible, statut zone d'achat, bougies pour les graphes).
+ * Plan en cours : le narratif du dernier briefing de James + l'état cumulé de
+ * TOUS les actifs qu'il a évoqués (cibles/surveillance fusionnées sur l'historique
+ * des briefings, mises à jour quand James reparle d'un actif, jamais perdues sinon).
  */
 app.get("/api/plan", async (_req, reply) => {
   try {
-    const targets = await evaluateTargets(CURRENT_BRIEFING.targets);
-    return { briefing: CURRENT_BRIEFING, targets };
+    const { targets: mergedTargets, watching } = mergeAssetState(BRIEFINGS);
+    const targets = await evaluateTargets(mergedTargets);
+    return { briefing: { ...CURRENT_BRIEFING, watching }, targets };
   } catch (err) {
     app.log.error(err);
     reply.code(502);

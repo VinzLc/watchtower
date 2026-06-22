@@ -91,6 +91,24 @@
         "note": "Entre AMD et Google, James trimmerait AMD en premier (Google a plus d'upside relatif). Pas de cible chiffrée propre, considéré comme gagnant secondaire."
       },
       {
+        "symbol": "NVDA",
+        "kind": "stock",
+        "label": "Nvidia",
+        "note": "Cité comme bon actif IA aux côtés de Broadcom et AMD, mais James estime que l'essentiel du jus a déjà été extrait de ces trades — pas un point d'entrée privilégié actuellement."
+      },
+      {
+        "symbol": "AVGO",
+        "kind": "stock",
+        "label": "Broadcom",
+        "note": "Cité comme bon actif IA aux côtés de Nvidia et AMD, mais James estime que l'essentiel du jus a déjà été extrait de ces trades — pas un point d'entrée privilégié actuellement."
+      },
+      {
+        "symbol": "INTC",
+        "kind": "stock",
+        "label": "Intel",
+        "note": "Classique piège à valeur (\"value trap\") selon James : monte sur une promesse d'avenir (fabs IA ?) sans fondamentaux solides derrière. Déconseillé comme rotation depuis Bitcoin/Tesla malgré le narratif de retournement."
+      },
+      {
         "symbol": "COIN",
         "kind": "stock",
         "label": "Coinbase",

@@ -83,6 +83,56 @@ function distanceAndStatus(
   return { distancePct, status };
 }
 
+type WatchingEntry = Briefing["watching"][number];
+
+interface MergedAssetEntry {
+  updatedAt: string;
+  kind: "target" | "watching";
+  target?: PriceTarget;
+  watching?: WatchingEntry;
+}
+
+/**
+ * Fusionne les cibles et actifs surveillés de TOUS les briefings en un seul état courant
+ * par actif (clé = kind + symbole) : chaque nouveau briefing met à jour l'actif s'il en
+ * reparle (cible ou commentaire plus récent gagne), mais un actif non mentionné dans le
+ * dernier briefing n'est jamais perdu — il reste affiché tel que défini par James la
+ * dernière fois qu'il en a parlé.
+ */
+export function mergeAssetState(briefings: Briefing[]): {
+  targets: PriceTarget[];
+  watching: WatchingEntry[];
+} {
+  const chronological = [...briefings].sort((a, b) => a.date.localeCompare(b.date));
+  const byAsset = new Map<string, MergedAssetEntry>();
+
+  for (const b of chronological) {
+    for (const t of b.targets) {
+      byAsset.set(`${t.kind}:${t.symbol.toUpperCase()}`, {
+        updatedAt: b.date,
+        kind: "target",
+        target: t,
+      });
+    }
+    for (const w of b.watching) {
+      byAsset.set(`${w.kind}:${w.symbol.toUpperCase()}`, {
+        updatedAt: b.date,
+        kind: "watching",
+        watching: w,
+      });
+    }
+  }
+
+  const entries = [...byAsset.values()].sort((a, b) =>
+    b.updatedAt.localeCompare(a.updatedAt),
+  );
+
+  return {
+    targets: entries.flatMap((e) => (e.target ? [e.target] : [])),
+    watching: entries.flatMap((e) => (e.watching ? [e.watching] : [])),
+  };
+}
+
 /** Évalue le statut d'une cible par rapport au prix de marché en direct. */
 export function evaluateTarget(
   target: PriceTarget,
