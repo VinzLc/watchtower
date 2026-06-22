@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
   schedule:
-    # Rafraîchit le snapshot de données toutes les 30 minutes.
-    - cron: "*/30 * * * *"
+    # Rafraîchit le snapshot de données toutes les 10 minutes.
+    - cron: "*/10 * * * *"
   workflow_dispatch:
 
 permissions:
