@@ -70,14 +70,14 @@ export function App() {
 
       {plan && (
         <>
-          <PlanHeader briefing={plan.briefing} />
-
           <h2 className="section-title">🎯 Cibles d'achat de James</h2>
           <section className="grid grid--targets">
             {plan.targets.map((ev) => (
               <TargetCard key={ev.target.symbol} ev={ev} />
             ))}
           </section>
+
+          <PlanHeader briefing={plan.briefing} />
         </>
       )}
 

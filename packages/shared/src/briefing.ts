@@ -68,6 +68,12 @@ export const APPROACHING_MARGIN_PCT = 5;
 /** Au-delà de cet écart avec le prix noté par James, on lève un avertissement. */
 export const NOTED_DIVERGENCE_WARN_PCT = 25;
 
+/**
+ * Marge par défaut (%) de notre propre cible au-dessus de celle de James,
+ * utilisée quand un briefing ne précise pas explicitement de vinzTarget.
+ */
+export const VINZ_DEFAULT_TOLERANCE_PCT = 10;
+
 /** Calcule l'écart en % et le statut d'un prix live par rapport à une cible. */
 function distanceAndStatus(
   livePrice: number,
@@ -147,16 +153,21 @@ export function evaluateTarget(
       ((livePrice - target.notedPrice) / target.notedPrice) * 100;
   }
 
+  // Si James n'a pas précisé de cible Vinz explicite, on en dérive une par
+  // défaut (cible James + marge de tolérance) pour ne jamais la perdre.
+  const vinzTarget =
+    target.vinzTarget ?? target.target * (1 + VINZ_DEFAULT_TOLERANCE_PCT / 100);
+
   let vinzDistancePct: number | undefined;
   let vinzStatus: TargetStatus | undefined;
-  if (target.vinzTarget && target.vinzTarget > 0) {
-    const vinz = distanceAndStatus(livePrice, target.vinzTarget);
+  if (vinzTarget > 0) {
+    const vinz = distanceAndStatus(livePrice, vinzTarget);
     vinzDistancePct = vinz.distancePct;
     vinzStatus = vinz.status;
   }
 
   return {
-    target,
+    target: { ...target, vinzTarget },
     livePrice,
     distancePct,
     status,
