@@ -1,5 +1,190 @@
 [
   {
+    "id": "2026-06-21-solstice-qa-rotations-spacex-mstr",
+    "title": "Q&A solstice d'été : rotations, SpaceX, MicroStrategy, Solana",
+    "date": "2026-06-21",
+    "tldr": "Pas trop tard pour roter, mais éviter les actifs qui viennent de faire 10x (ex: Micron) — préférer Bitcoin qui peut doubler. Discipline stricte pour lever du cash : vendre d'abord les perdants structurels, ne jamais trimmer Tesla, AMD avant Google si besoin. SpaceX reste la conviction forte (zone d'achat bas-$140s). MicroStrategy décote de 15% vs NAV mais sans FOMO court terme attendu. Gros plaidoyer pour Solana face à Coinbase sur la tokenisation d'actions. Rotation des mineurs Bitcoin vers l'IA en cours ; Hut 8 jugé largement surévalué.",
+    "stance": [
+      "Time les rotations visuellement avec des pair charts (ratio actif/actif ou actif/BTC) plutôt qu'à l'instinct — ne pas roter vers un actif qui vient de faire 10x sur une courte fenêtre (ex: Micron vs Bitcoin, tout le gain s'est fait en 6-9 mois).",
+      "Règles pour lever du cash, dans l'ordre : 1) vendre d'abord les positions perdantes/structurelles qu'on ne rachèterait pas aujourd'hui (perte fiscale récupérable) ; 2) ne jamais trimmer Tesla sauf contrainte absolue (conviction maximale, \"money market\" de James) ; 3) ensuite seulement les gagnants secondaires (AMD avant Google si arbitrage nécessaire).",
+      "Règle d'or : le manque à gagner de vendre trop tôt ses meilleurs gagnants dépasse presque toujours le bénéfice de garder des perdants structurels — couper les pertes courtes, laisser courir les gagnants (citation David Sacks). Erreur vue cette année : avoir vendu trop tôt Marvell/ALAB/Micron/AMD.",
+      "Tesla reste la conviction maximale et le \"money market\" de James — tout cash excédentaire y est déployé (pari asymétrique). SpaceX sert de plancher de valorisation indirect pour Tesla (canari dans la mine).",
+      "Rotation des mineurs Bitcoin pure-play vers ceux pivotant vers l'IA/GPU avec contrats power hyperscaler — le coût de minage (~$80k/BTC) dépasse le cours actuel de Bitcoin (~$64k) pour qui paie plus de 5¢/kWh.",
+      "Sur la tokenisation d'actions, Solana s'impose comme l'infrastructure dominante (>$1Md de volume hebdo, 10x les autres chains combinées) face à Coinbase, dont les fondamentaux restent fragiles malgré des frais élevés."
+    ],
+    "macro": [
+      "Bitcoin à ~$64k, -45% de l'ATH — analogie avec le plancher $42k du cycle précédent ; bon point d'entrée si position absente. James croit en un doublement (~$128k) sous 12 mois.",
+      "Pénurie de compute IA généralisée et confirmée par la CFO d'OpenAI (personne n'aura de compute suffisant en 2026-2027 hors Elon) — même Anthropic loue du compute à xAI, même Google manque de capacité malgré ses propres TPUs.",
+      "FOMC de la semaine : une hausse de taux reste sur la table à court terme, mais des baisses sont attendues fin d'année / 2027 / 2028 — impacte les thèses MicroStrategy, Blend Labs et l'immobilier.",
+      "Tokenisation des actions = mega-trend macro, BlackRock et les majors TradFi arrivent on-chain pour du trading 24/7."
+    ],
+    "targets": [
+      {
+        "symbol": "SPCX",
+        "kind": "stock",
+        "label": "SpaceX",
+        "target": 140,
+        "notedPrice": 160,
+        "note": "Zone d'achat bas-$140s confirmée (\"a stone's throw away\" du cours vu jeudi/vendredi ~$160s). Sous $135 jugé improbable sauf panique/cygne gris/dump Nasdaq. SOTP $18.5T d'ici 2030, pas un rugpull mais mean-revert post-IPO attendu (Morningstar : -56% vs prix IPO)."
+      },
+      {
+        "symbol": "MSTR",
+        "kind": "stock",
+        "label": "Strategy (MicroStrategy)",
+        "target": 163,
+        "notedPrice": 130,
+        "note": "Cote à ~15% de décote vs NAV (juste valeur ~$163 au cours Bitcoin actuel) — pas une prime contrairement à certains calculs affichés ailleurs. Besoin de Bitcoin à $110-120k pour repasser au point mort sur les positions à cout basis élevé. Bêta Bitcoin 2x-2.8x dans les deux sens."
+      },
+      {
+        "symbol": "BTCUSDT",
+        "kind": "crypto",
+        "label": "Bitcoin",
+        "target": 64000,
+        "note": "Retour au niveau \"magique\" des $64k, écho au plancher $42k du cycle précédent — bon point d'entrée si pas encore de position. James croit en un doublement (~$128k) sous 12 mois, largement supérieur aux 30% d'upside restant sur Micron."
+      },
+      {
+        "symbol": "SOLUSDT",
+        "kind": "crypto",
+        "label": "Solana",
+        "target": 70,
+        "note": "\"N'achète pas Coinbase, achète Solana à $70.\" Solana dépasse $1Md de volume hebdo en actions tokenisées, 10x toutes les autres chains combinées — la vraie menace pour Coinbase."
+      },
+      {
+        "symbol": "SATS",
+        "kind": "stock",
+        "label": "EchoStar",
+        "target": 105,
+        "note": "Proxy/arb sur SpaceX : si SpaceX vaut $2T, Echostar devrait coter au moins $150-160 (actuellement bas-$100s). James grappillerait davantage sur ces niveaux bas."
+      },
+      {
+        "symbol": "BLND",
+        "kind": "stock",
+        "label": "Blend Labs",
+        "target": 1.5,
+        "notedPrice": 1.7,
+        "note": "Spéculatif, pas une position de James (\"pas mon truc\"). Zone $1.40-1.50 envisageable pour ~1% du portefeuille si les baisses de taux relancent le refinancement hypothécaire. Très risqué : Altman Z-score -9.93 (détresse profonde), CEO vend sans interruption depuis 2022. Haveli Investments accumule massivement (18.6M actions) en pariant sur la baisse des taux. Upside visé : $3-4 sous 1 an."
+      }
+    ],
+    "watching": [
+      {
+        "symbol": "MU",
+        "kind": "stock",
+        "label": "Micron",
+        "note": "Ne pas roter Bitcoin vers Micron maintenant : cours ~$1200, cible Wall St ~$1650 (+30% seulement) contre un Bitcoin qui peut doubler. Tout le rallye Micron s'est fait en 6-9 mois (depuis septembre 2025) — prudence après un run pareil."
+      },
+      {
+        "symbol": "GOOGL",
+        "kind": "stock",
+        "label": "Alphabet (Google)",
+        "note": "Cible 12 mois consensus $427 (cours ~$368, soit +16%) — meilleur upside relatif que Robinhood ; à privilégier sur AMD en cas d'arbitrage de cash entre les deux. Récemment pénalisé par une émission obligataire de $80Md."
+      },
+      {
+        "symbol": "HOOD",
+        "kind": "stock",
+        "label": "Robinhood",
+        "note": "Cible 12 mois consensus ~$102 (cours ~$108, soit -5.6%) — candidat prioritaire pour vendre/trimmer si besoin de cash, avant de toucher à Google, AMD ou Tesla."
+      },
+      {
+        "symbol": "AMD",
+        "kind": "stock",
+        "label": "AMD",
+        "note": "Entre AMD et Google, James trimmerait AMD en premier (Google a plus d'upside relatif). Pas de cible chiffrée propre, considéré comme gagnant secondaire."
+      },
+      {
+        "symbol": "COIN",
+        "kind": "stock",
+        "label": "Coinbase",
+        "note": "Support technique solide à $160 (niveau 2, testé en 2024 et 2025), mais perd $400M sur $1.46Md de revenus malgré des frais élevés. Solana écrase Coinbase en volume d'actions tokenisées — James préfère Solana à Coinbase ici (\"n'achète pas Coinbase\")."
+      },
+      {
+        "symbol": "CLSK",
+        "kind": "stock",
+        "label": "CleanSpark",
+        "note": "+130% vs Bitcoin depuis le bas du dernier bear market. Parmi les mineurs à trier : privilégier le pivot IA/GPU avec contrats power hyperscaler, éviter les pure-players (coût de minage ~$80k/BTC > Bitcoin à $64k si électricité >5¢/kWh)."
+      },
+      {
+        "symbol": "RIOT",
+        "kind": "stock",
+        "label": "Riot Platforms",
+        "note": "+130% vs Bitcoin (et +80% en absolu) depuis le bas du dernier bear market. Même grille de lecture que CleanSpark : valoriser le pivot IA/GPU avant d'investir."
+      },
+      {
+        "symbol": "HUT",
+        "kind": "stock",
+        "label": "Hut 8",
+        "note": "James ne comprend pas sa valorisation à $125 : pas de croissance, pertes importantes, dette élevée — signal d'évitement clair (\"makes no sense\")."
+      },
+      {
+        "symbol": "NPPTF",
+        "kind": "stock",
+        "label": "Neptune Digital",
+        "note": "~30% d'exposition SpaceX (via proxy type Echostar), ~70% crypto/Bitcoin/Polkadot — tiré vers le bas par la faiblesse crypto récente, pas par SpaceX. Ne pas vendre au plus bas, attendre le rebond crypto et la reconnaissance de l'allocation SpaceX."
+      }
+    ],
+    "body": "Q&A hebdo — Solstice d'été / Father's Day (21 juin 2026)\n\nIntroduction\nQuestion récurrente : \"Is it too late to rotate?\" On va passer en revue Bitcoin, MicroStrategy, Coinbase, CleanSpark, des mineurs, SpaceX, et plus. Toujours non-financial advice, questions issues de la communauté Patreon.\n\nTrop tard pour roter ? (Tofu : 85% Bitcoin depuis 2019, 15% Tesla depuis 2021)\nBitcoin depuis 2019 = 7-9x (CAGR 28%). Tesla depuis 2021 = 1.5-2x. Les tops noms IA ont fait 3-8x en 6 mois — un vrai \"alpha drag\" sur Bitcoin/Tesla, mais pas de quoi culpabiliser : ce sont de bons actifs, juste un cas classique de \"Pomo\" (pain of missing out). Attention cependant à des pièges à valeur comme Intel — certains actifs montent sans fondamentaux solides, juste sur une promesse d'avenir.\n\nTimer ses rotations (pair charts)\nNe jamais deviner : comparer le ratio actif/actif (ex: Micron/Bitcoin) pour visualiser ce qui a déjà couru et l'upside restant vs la cible. Exemple Micron vs Bitcoin : Micron a fait 10x le retour de Bitcoin depuis 2022-2023, mais tout le gain s'est fait depuis septembre (6-9 mois). Roter du Bitcoin vers Micron maintenant serait dangereux : Micron proche de $1200, cible $1650 (+30% seulement) ; Bitcoin peut doubler (+100%) depuis son niveau actuel. James pense que Bitcoin va surperformer Micron sur les 12 prochains mois. Tesla vs Bitcoin : Tesla a battu Bitcoin de +180% depuis l'appel d'il y a 2 ans.\n\nMicroStrategy : couper les ponts pour un \"cheval plus rapide\" ?\nCours actuel ~$130. Le plus important : le multiple de NAV (valeur des actifs nets), pas le prix brut. Le multiple de 2.53x de l'ancien cycle ne reviendra probablement pas (le marché est plus averti). Si Bitcoin revient à $120k, MSTR vaudrait environ $291 à NAV 1.0x — mais avec le modèle d'arb actuel (décote de 15% vs NAV), la juste valeur est plutôt ~$163 aujourd'hui alors que ça cote $130. Attention aux calculs de \"prime NAV\" affichés ailleurs (site MSTR etc.) — c'est en réalité une DÉCOTE, pas une prime. Chaque émission ATM à ce niveau n'est plus accrétive (pas d'accumulation de sats par action comme avant). Pour repasser au point mort, il faut que Bitcoin double vers $110-120k. Le bêta Bitcoin de MSTR est 2x-2.8x (dans les deux sens). Conclusion : on ne vend pas au plus bas, on tient, on peut vendre des covered calls sur les rallyes pour amplifier le bag.\n\nLever du cash : vendre les perdants ou trimmer les gagnants ?\nComparaison Robinhood vs Google : cible 12 mois Robinhood ~$102 (-5.6% vs cours), cible Google ~$427 (+16% vs cours). Toujours comparer la cible au cours actuel avant de trimmer.\nRègles pour lever du cash : 1) \"Cleaning out the closet\" — pour chaque actif, se demander \"l'achèterais-je aujourd'hui ?\" Si non, vendre (ex: Neptune Digital, Robinhood) — ça compense les gains côté fiscal, alpha gratuit. 2) Ne jamais trimmer Tesla sauf contrainte absolue — conviction maximale (Optimus, robotaxis, AGI à la marge), SpaceX sert de canari/plancher de valorisation pour Tesla. Tesla = \"money market\" de James : tout cash excédentaire y est déployé, pari asymétrique (peu de downside perçu, fort upside). 3) Ensuite seulement les gagnants secondaires (AMD, Google) — entre les deux, James trimmerait AMD avant Google (Google a plus d'upside relatif).\nRègle d'or : le manque à gagner de vendre trop tôt ses meilleurs gagnants dépasse presque toujours le bénéfice psychologique de garder des perdants structurels. Coupe les pertes courtes, laisse courir les gagnants (citation David Sacks). Erreur classique vue cette année : avoir vendu trop tôt Marvell, ALAB, Micron, AMD puis subir l'angoisse de les voir continuer à monter.\n\nSpaceX (SPCX) : IPO hype vs réalité\nPosition personnelle de James, rare exception (il n'achète quasiment jamais d'IPO). Pas de concurrence réelle (Starship, boosters récupérables, Blue Origin loin derrière). Valorisation SOTP (somme des parties) : $18.5T d'ici 2030, en comptant par exemple le potentiel télécom global ($600Md de TAM) et le rang de 4e fournisseur de compute hyperscaler. Hype vs réalité : pas un rugpull, mais il faut s'attendre à des déblocages d'actions (unlocks), de la vente \"lifestyle\" (bateaux, voitures), Morningstar a even discounté le cash-flow à -56% sous le prix d'IPO. James attend que le marché finisse de digérer la vente avant d'ajouter (20, 60, 75 jours...). Earnings à venir pourraient surprendre vu l'activité hyperscaler. Si Starship réussit à attraper les boosters et qu'ils mettent des data centers en orbite dès 2027, le TAM devient réel. Zone d'achat : bas des $140s (\"a stone's throw away\" du cours actuel ~$160s vu jeudi/vendredi). Sous $135 jugé improbable sauf vente panique / cygne gris / dump généralisé du Nasdaq (actif high-beta et corrélé). James a une petite position, veut en avoir plus.\n\nPourquoi les mineurs Bitcoin montent alors que Bitcoin baisse ?\nLes mineurs sont historiquement excellents pour dénicher de l'énergie bon marché et flexible à grande échelle (ex: Texas, on/off des rigs). C'est exactement ce dont l'IA a besoin (mur physique de l'énergie : permis, transformateurs). D'où la prime sur les mineurs ayant déjà cette infrastructure. CleanSpark vs Bitcoin : +130% depuis le bas du dernier bear market. Riot vs Bitcoin : +130% (et +80% en absolu). Iris Energy vs Bitcoin : plusieurs centaines de %. Conclusion : roter hors des mineurs \"pure play\" (sans pivot IA) — coût moyen de minage Bitcoin ~$80k alors que Bitcoin cote $64k : quiconque mine à plus de 5¢/kWh perd de l'argent. Privilégier les mineurs avec clients IA, pivot GPU, et contrats mégawatts signés avec des hyperscalers ; vérifier les données, certains ne font que parler.\n\nLa dure vérité sur le compute IA\nAnthropic loue du compute à xAI (Elon) faute de capacité propre. Même Google (qui possède ses propres data centers et TPUs depuis 10 ans) manque de compute. La CFO d'OpenAI a confirmé en personne qu'aucun acteur n'a ou ne trouvera de compute suffisant en 2026-2027, sauf via Elon. Coût du GPU/heure par acteur (sources multiples) : xAI/Colossus ~$1/h, mineur Bitcoin pivoté en colo IA ~$3+/h, Coreweave ~$6.50/h à la demande, Google Cloud ~$11.60/h à la demande (12x plus cher que xAI). C'est une des raisons pour lesquelles SpaceX est si valorisée : compute cohérent + énergie propre derrière le compteur + mégapacks pour stabiliser l'électricité.\n\nHut 8 (HUT)\nJames ne comprend pas sa valorisation à $125 : aucune croissance, pertes importantes, dette élevée. \"Makes no sense.\"\n\nBlend Labs (BLND)\nMicro-cap logiciel de souscription hypothécaire, ~$1.70, -45% sur 6 mois. Thèse : des baisses de taux déclencheraient un boom de refinancement que leur IA de souscription pourrait capter. Score Altman Z de -9.93 (zone de détresse profonde, risque de faillite sous 2 ans), revenu par action en baisse depuis 5 ans, le fondateur/CEO vend des actions sans interruption depuis 2022 (signal négatif — James ne vendrait jamais ses propres actions s'il en avait). En face, Haveli Investments (Brian Sheth) achète massivement en open market depuis $5 jusqu'à $1.70, ~18.6M d'actions. James ne l'achète pas lui-même (pas son secteur), mais si quelqu'un veut une position spéculative, ~1% du portefeuille dans la zone $1.40-1.50 \"pourrait être intéressant\", avec un retour vers $3-4 plausible sous 1 an si les taux baissent comme prévu.\n\nTokenisation des actions et Coinbase (COIN)\nMega-trend macro : BlackRock et les géants TradFi mettent des fonds on-chain, le trading 24/7 des actions tokenisées arrive. Coinbase a un moat institutionnel réel (custody, conformité) et tokenise via Base. Le graphique de COIN montre un pattern de fond solide à $160 (niveau 2, testé en 2024 et 2025) — bon support technique. Mais les fondamentaux inquiètent : Coinbase perd $400M sur $1.46Md de revenus malgré des frais élevés, et Solana fait déjà plus de volume de trading que Coinbase et Kraken réunis. La vraie concurrence de Coinbase n'est pas une autre plateforme centralisée mais Solana, qui vient de dépasser $1Md de volume hebdomadaire en actions tokenisées — 10x toutes les autres chains combinées. Conclusion de James : n'achète pas Coinbase, achète Solana à $70.\n\nÉchange en direct (questions live)\nEchostar (SATS) / Neptune Digital (NPPTF) : l'arb post-IPO SpaceX existe toujours sur Echostar — si SpaceX vaut $2T, Echostar devrait coter au moins $150-160 (actuellement bas-$100s). Neptune Digital est ~30% exposé à SpaceX (via ce type de proxy) et ~70% crypto/Bitcoin/Polkadot — donc tiré vers le bas par la faiblesse crypto récente, pas par SpaceX. Ne pas vendre au plus bas, attendre le rebond crypto et la reconnaissance de la valeur SpaceX dans Neptune.\nSpaceX sous $135 jugé peu probable ; bas des $140s beaucoup plus probable comme zone d'achat (on a vu les $160s jeudi/vendredi, donc à 20$ de la zone). James a une petite position, en veut plus.\n\nConclusion\nRécolter du cash est une science : vends ce que tu ne rachèterais pas, ne touche jamais à ta plus forte conviction, laisse courir tes gagnants."
+  },
+  {
+    "id": "2026-06-20-ia-weekly-nuggets-june-12-18",
+    "title": "IA Weekly Nuggets (June 12-18, 2026)",
+    "date": "2026-06-20",
+    "tldr": "Récap hebdo des moves d'IA (le trader que James suit) : forte conviction sur le levier (synthetic longs > LEAPS > actions), conversion systématique des LEAPS TSLA en actions, et plusieurs niveaux de prix à surveiller — TSLA sous $400 (surtout ~$380), PLTR ($130 nibble / $104 fort), BTC ~$60k vu comme plancher.",
+    "stance": [
+      "IA a enchaîné des retours de 30x+ sur plusieurs positions de l'IA13 cette année, parfois en 16-20 semaines — reste prudent malgré la performance.",
+      "Préférence marquée pour le levier (synthetic long) plutôt que puts ou actions pures : ex. MRVL +40x via synthetic long vs +8.3x via LEAPS vs +3.5x via l'action seule.",
+      "Convertit systématiquement ses LEAPS en actions réelles (le \"mattress\") pour éviter l'impôt et garder le compounding — fait sans exception sur TSLA depuis 10 ans ; dernière conversion +4.59% de mattress.",
+      "A repris le \"perping\" (vente d'options sur position) après une pause depuis le 10/10/25.",
+      "Beaucoup de LEAPS TSLA ajoutés pour décembre 2028 ; bascule une partie du cash immobilier vers des options TSLA plutôt que du SpaceX au comptant.",
+      "Sur TSLA : achète massivement tout ce qui est sous $400, surtout proche de $380 — n'a jamais été aussi haussier sur les synthetic longs ($600-650 jugé \"facile\")."
+    ],
+    "macro": [
+      "Arb SpaceX/Tesla : à $2.2T de valorisation SpaceX, un alignement des market caps donnerait $587 pour TSLA — objectif à observer d'ici la fin d'année.",
+      "Scénario de fusion SpaceX/Tesla jugé peu probable à court terme (plutôt 2027-2028) ; si \"fusion d'égaux\" un jour, l'équivalence de valorisation impliquerait $753 pour TSLA.",
+      "Bitcoin : $60k vu comme plancher (double creux confirmé), malgré un sentiment de marché très négatif.",
+      "Cuivre : anticipe un doublement du prix sur 3 ans.",
+      "KLAC jugé pas assez sous-évalué comparé à d'autres opportunités — IA vise le top 0.3% des actions."
+    ],
+    "targets": [
+      {
+        "symbol": "TSLA",
+        "kind": "stock",
+        "label": "Tesla",
+        "target": 380,
+        "note": "IA achète massivement tout ce qui est sous $400, surtout proche de $380 (\"comme un démon\"). N'a jamais été aussi haussier sur ses synthetic longs ($600-650 jugé facile)."
+      },
+      {
+        "symbol": "PLTR",
+        "kind": "stock",
+        "label": "Palantir",
+        "target": 104,
+        "note": "Nibble dès $130, position agressive (\"go hard\") sous $104."
+      },
+      {
+        "symbol": "BTCUSDT",
+        "kind": "crypto",
+        "label": "Bitcoin",
+        "target": 60000,
+        "note": "$60k vu comme plancher (double creux confirmé), malgré un sentiment de marché très négatif."
+      },
+      {
+        "symbol": "SPCX",
+        "kind": "stock",
+        "label": "SpaceX",
+        "target": 140,
+        "notedPrice": 170.74,
+        "note": "IA estime 20-30% de chance de revoir les $140s. Objectif perso d'IA : 588 actions (\"retire on\"), un bag à $1m. Sert aussi de base à l'arb TSLA/SPCX ($2.2T de valorisation)."
+      }
+    ],
+    "watching": [
+      {
+        "symbol": "KLAC",
+        "kind": "stock",
+        "label": "KLA Corporation",
+        "note": "Pas assez de croissance / pas assez sous-évalué comparé aux autres opportunités (IA vise le top 0.3% des actions) ; pas de position pour l'instant."
+      }
+    ],
+    "body": "IA Weekly Nuggets (June 12-18, 2026)\n\nNew\n2 days ago\nShow less\nThanks, Josh, for collecting.\n\nTrading Investing:\n\n30x Returns:\nIA has made a bunch of 30x PLUS returns this year so far on many of the IA13 often in 16 - 20 weeks. However; let's not get cocky. These are special times.\n\nAnother 30x:\nIn a recent interview from Elon, IA concludes TSLA can 30x from here.\n\nLeverage:\nIA gets far more return utilizing a synthetic long vs buying a put vs buying pure from stock eg on MARVELL\n\nEg MRVL Trade is up a 40x return on the SL - ie 4000%\n\nEg MRVL Trade if just the leap an 8.3x return so far - ie 830%\n\nEg MRVL Trade if just the equity 3.5x return so far - ie 350%\n\nFor a tiny cash outlay IA can create a position that exceeds the size of his SOL position in just 4 months... and it took him 5 years to stack SOL. Now things like his MU, ALAB, MRVL are already larger than his SOL in just a few months.\n\nIADSS:\nIADSS is effective on SPX on the 1HR, 15min, and 5 min charts.\n\nExercising Options:\nIA always turns long-term options, called LEAPS, into actual shares of stock. He does this to avoid triggering taxes, keep the power of compounding working, and build up what he calls his \"mattress\" — a larger stock position he can use to generate income.\n\nFor example, yesterday's LEAPS conversion increased his mattress size by 4.59%. He can then use those shares to sell puts and calls.\n\nNot financial advice.\n\nIA has converted every SINGLE TSLA LEAP into stock for the past 10 years — he has never skipped one.\n\nPLTR:\nNibble at $130 and go hard at $104.\n\nPerping:\nIA put a pause on perping on 10/10/25. However; he felt like it was time to put his toes back in the water.\n\nKLAC:\nThere is not enough growth. Look for the top .3% of stocks. KLAC is good, but not as underpriced as others.\n\nCopper:\nCopper will probably double in the next 3 years.\n\nTesla:\nLeaps:\n\nIA has added a truckload of leaps for December 2028.\n\nTSLA SPCX ARB $587:\nSPCX and TSLA is a potential arb trade opportunity. With SPCX at 2.2T, TSLA could hit a potential price target of $587 to reach equal market value. Lets see if we hit this by year end.\n\nSPCX Retire On:\nGetting to 588 shares is the end game. It will be a nice $1m bag soon.\n\nBuying TSLA:\nIA will be swapping some of his real estate dollars on TSLA options rather than SPCX spot.\n\nTSLA Gain:\nIA missed out on SPCX but has already made $70k on the 380 synthetic longs in just 3 days.\n\nTesla and SPCX:\n\nAGI:\nTSLA doesn't move the same as the rest of the IA13 because it is AGI, not a pick or shovel. However; the TSLA time is incoming.\n\nSynthetic Longs:\nIA has been doing this for a long time with TSLA and he has never been more bullish. He has traded options on TSLA for a decade. $600 to $650 is easy money.\n\nSub $400:\nAnything sub $400 IA buys like a demon esp near $380. He is shocked we are still so low mid summer 2026. It is a dream.\n\nSPCX:\nThere is a 20 to 30% chance we see $140s.\n\nMerger:\nA lot of so-called experts out there are claiming a merger between SpaceX and Tesla is imminent. IA doesn't buy it. In IA's view, any potential tie-up is still years down the road. However, the common theory is that if they do merge, it will be a \"merger of equals\"—meaning both companies would combine at matching market caps. WHY? Because Tesla shareholders will reject it unless a merger of equals - IA included. If we assume that hypothetical scenario played out today, matching Tesla's valuation to SpaceX's current market cap would put Tesla stock at exactly $753 per share. This is what IA refers to as the arbitrage—or \"arb\"—opportunity, though it's strictly a longer-term play. think late 2027 or 2028. IA is happy to be wrong on this timeline.\n\nBitcoin:\n60k:\n\nIA has said 100 times, 60k looks like the bottom. Now that we have a double bottom. But sentiment is truly in the toilet. Bears are loving it.\n\nTABI:"
+  },
+  {
     "id": "2026-06-19-summer-game-plan",
     "title": "My Summer Game Plan",
     "date": "2026-06-19",

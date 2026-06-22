@@ -24,6 +24,7 @@ export const WATCHLIST: Asset[] = [
   { id: "stock:MU", kind: "stock", symbol: "MU", label: "Micron" },
   { id: "stock:PLTR", kind: "stock", symbol: "PLTR", label: "Palantir" },
   { id: "stock:STRC", kind: "stock", symbol: "STRC", label: "STRC" },
+  { id: "stock:SPCX", kind: "stock", symbol: "SPCX", label: "SpaceX" },
   { id: "crypto:BTCUSDT", kind: "crypto", symbol: "BTCUSDT", label: "Bitcoin" },
   { id: "crypto:ETHUSDT", kind: "crypto", symbol: "ETHUSDT", label: "Ethereum" },
 ];
