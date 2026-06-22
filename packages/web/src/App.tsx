@@ -44,11 +44,16 @@ export function App() {
         <p className="app__subtitle">
           Le plan de James, reflété en temps réel
         </p>
-        {updatedAt && (
-          <span className="app__updated">
-            Données du {new Date(updatedAt).toLocaleString("fr-FR")}
+        <div className="app__meta">
+          {updatedAt && (
+            <span className="app__updated">
+              📊 Données du {new Date(updatedAt).toLocaleString("fr-FR")}
+            </span>
+          )}
+          <span className="app__updated app__updated--deploy">
+            🚀 Site déployé le {new Date(__BUILD_TIME__).toLocaleString("fr-FR")}
           </span>
-        )}
+        </div>
       </header>
 
       {error && (

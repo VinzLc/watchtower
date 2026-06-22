@@ -14,6 +14,10 @@ export default defineConfig(({ mode }) => {
   return {
     // Sous-chemin du projet sur GitHub Pages (https://<user>.github.io/watchtower/).
     base: mode === "production" ? env.BASE_PATH ?? "/watchtower/" : "/",
+    // Horodatage du build, affiché dans l'UI pour distinguer "site déployé" de "données rafraîchies".
+    define: {
+      __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
+    },
     plugins: [react()],
     server: {
       port: webPort,
